@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ block.super }}
+{% endblock %}
+
+{% block content %}
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class="active" aria-current="true"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item">
+        <img src="{% static "img/header_1.png" %}" style="height: 512px; width: 100%">
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1 class="title">Чем занимается музей?</h1>
+            <p class="text" style="width: 60rem">Среди направлений работы музея - сохранение и изучение исторического наследия, творческая деятельность, просветительско-образовательные программы.</p>
+            <p><a class="btn-send btn-lg btn-primary" href="#">Подробнее</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static "img/header_2.png" %}" style="height: 512px; width: 100%">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1 class="title">Страницы военной истории нашей Родины</h1>
+            <p c;ass="text">Главная роль в музее отведена выставке, посвященной событиям Великой Отечественной войны. Помимо освещения хронологии событий, мы знакомим посетителя с бытом солдата, вещами его повседневности.</p>
+            <p><a class="btn-send btn-lg btn-primary" href="#">Посмотреть</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item active">
+        <img src="{% static "img/header_3.png" %}" style="height: 512px; width: 100%">
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1 class="title">Творчество</h1>
+            <p class="text" style="margin-left: auto; max-width: 50rem;">Музей принимает активное участие в мероприятиях различного уровня, привлекая к этому молодое поколение. Работа с креативными школьниками занимает важное место в деятельности музея..</p>
+            <p><a class="btn-send btn-lg btn-primary" href="#">Галерея</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6); margin-left: auto; margin-right: auto; width: 80%">
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <font color="white">
+        <div class="row pt-5">
+          <h3 style="font-weight: bold; font-style: oblique; margin-left: 40%; font-stretch: condensed; padding-bottom: 1.5rem;">Новости музея:</h3>
+          {% for post in posts %}
+            <div class="col-lg-4">
+              <svg
+                class="bd-placeholder-img rounded-circle"
+                style="background-image: url(/media/{{post.main_picture}}); background-size: cover;"
+                width="140"
+                height="140"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img" 
+                aria-label="Placeholder: 140x140"
+                preserveAspectRatio="xMidYMid slice"
+                focusable="false"
+                ></svg>
+              <h2 class="title">{{ post.title|truncatechars:40}}</h2>
+              <p class="text">{{ post.get_short_text|truncatechars:120 }}...</p>
+              <p><a class="btn btn-secondary" href="{{ post.get_absolute_url }}">Подробнее »</a></p>
+            </div><!-- /.col-lg-4 -->
+          {% endfor %}
+        </div><!-- /.row -->
+      </font>
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading title">История морского кадетского корпуса "Колыбель российского флота"</h2>
+          <p class="lead text">История кадесткого корпуса начинается с 18 октября 2002 года – дата когда он был организован при школе. Экспозиция рассказывает об истории военно-морских сил России, их роли в Великой Отечественной войне. Главная цель - рассказать о подвигах предков, воспитать патриотизм в подрастающем поколении.</p>
+        </div>
+        <div class="col-md-5">
+          <svg
+            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+            style="background-image: url({% static "img/home_state1.png" %}); width: 500px; height: 500px;"
+            width="500"
+            height="500"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Placeholder: 500x500"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+            ></svg>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading title"><span class="text-muted">Оккупационный режим</span></h2>
+          <p class="lead text">C июля 1942 года большая часть территории Воронежской области была оккупирована фашистами. Более полугода шли ожесточённые бои за город. Экспозиция посвящена оккупационному режиму, существовавшему на Воронежской земле в 1942- 1943 гг. В ней представлен стенд, выполненный выпускницей школы Бухтояровой Софией и экспонатами, которые были найдены на данной территории.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+          <svg
+            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+            style="background-image: url({% static "img/home_state2.png" %}); width: 500px; height: 500px;"
+            width="500"
+            height="500"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Placeholder: 500x500"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+            ></svg>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading title">Жизнь и быт русского человека к 19ому - началу 20го века</h2>
+          <p class="lead text">Коллекция представлена широко предметами быта: гончарная посуда, пряха с принадлежностями, утюги, в том числе рубелка; валенки, лапти, женская и мужская старинная одежда (рубахи, сарафаны, платки, зипун, шапка); самовар, гребни, ухваты и чугунки, деревянный ковш, самотканые дорожки, рушники с вышитой монограммой и рисунком, постельное бельё.</p>
+        </div>
+        <div class="col-md-5">
+          <svg
+            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+            style="background-image: url({% static "img/home_state3.png" %}); width: 500px; height: 500px;"
+            width="500"
+            height="500"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Placeholder: 500x500"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+            ></svg>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+    </div>
+  </div>
+{% endblock %}
