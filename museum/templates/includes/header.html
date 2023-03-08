@@ -1,0 +1,43 @@
+{% load static %}
+
+<!-- Navbar --> 
+<div class="container-fluid">
+  <a class="navbar-brand" href="{% url "homepage:home" %}">
+    <img style="width: 50px; float: left; margin-left: 2rem; margin-right: 1rem;" src="{% static "img/favicon/favicon-png-50x50.png" %}">
+  </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url "homepage:home" %}">Главная</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Первая экспозиция</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url "homepage:post" 9 %}">Вторая экспозиция</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Третья экспозиция</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Галерея</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url "homepage:news" %}">Новости</a>
+      </li>
+      {% if user.is_staff or user.is_superuser %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'homepage:create_post' %}">Создать пост</a>
+        </li>
+      {% endif %}
+    </ul>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn-send btn-outline-success" type="submit">Найти</button>
+    </form>
+  </div>
+</div>
+<!-- Navbar -->

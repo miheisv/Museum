@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %}
+Sign up :: {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<div class="card-form mx-auto mb-auto mt-4 bg-dark">
+  <div class="card-body mx-auto">
+    <font color="white">
+    <h5 class="card-title">Sign up</h5>
+    {% block form %}
+    {% include 'includes/base_form.html' %}
+    <small style="color: #8f8f8f; padding-left: 32px;"><a href="{% url 'users:password_reset' %}" style="text-decoration: none;">Forgot the password?</a></small>
+    {% endblock %}
+    </font>
+  </div>
+</div>
+{% endblock %}

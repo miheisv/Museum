@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Create Tag :: {{ block.super }}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="ml-2">
+      <h3 style="color: #8f8f8f;">Create Tag</h3>
+      <hr>
+    </div>
+    {% block form %}
+        {% include 'includes/base_form.html' %}
+    {% endblock %}
+  </div>
+{% endblock %}

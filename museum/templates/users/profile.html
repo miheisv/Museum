@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %}
+Your profile : {{ block.super }}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="ml-2 mt-4">
+      <font color="white">
+      <h2>{{ user.username }}</h2>
+      <h3 style="color: #8f8f8f;">Change profile</h3>
+      <hr>
+    </div>
+    {% block form %}
+        {% include 'includes/base_form.html' %}
+    {% endblock %}
+    </font>
+  </div>
+{% endblock %}
