@@ -12,7 +12,7 @@ class HomeView(ListView):
 
     def get_queryset(self):
         post_to_view = Post.objects.select_main()
-        post_to_view = post_to_view[len(post_to_view) - 4:len(post_to_view) - 1]
+        post_to_view = post_to_view[len(post_to_view) - 3:len(post_to_view)] if len(post_to_view) - 3 >= 0 else []
         return post_to_view
 
 
