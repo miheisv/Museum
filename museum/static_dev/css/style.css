@@ -130,6 +130,7 @@ a:hover, a {
     text-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
 }
 
+
 .author-username:hover {
     text-decoration: underline;
     color: #fff;
