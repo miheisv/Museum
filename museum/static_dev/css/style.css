@@ -34,7 +34,6 @@
 body {
     background: var(--bg-main);
     color: #000000;
-    padding-top: 75px;
     font-family: 'open sans', serif;
 }
 
